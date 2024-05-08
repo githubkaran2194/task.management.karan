@@ -20,7 +20,7 @@ const TaskList = () => {
         setIsLoading(true);
         setError(null);
         try {
-            const response = await fetch("http://localhost:3000/api/tasks");
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URI}/api/tasks`);
             if (!response.ok) {
                 throw new Error("Failed to fetch tasks");
             }
@@ -36,10 +36,10 @@ const TaskList = () => {
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URI}/api/tasks/api/tasks/${id}`, {
                 method: 'DELETE'
             });
-            toast("deleted task", response)
+            toast.success("deleted task", response)
             if (!response.ok) {
                 throw new Error("Failed to delete task");
             }

@@ -15,7 +15,7 @@ const TaskForm = () => {
         e.preventDefault();
         const newTask = { task, description };
         try {
-            const response = await fetch('http://localhost:3000/api/tasks', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URI}/api/tasks`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
